@@ -126,11 +126,13 @@
         	figlit                  // Make CLI banners
 		powerline		// Make the terminal look nice
 		}
-/* Start new services */
-	chsh -s /bin/zsh
+/* Start new services|basic configs */
+	chsh -s $(which zsh)
 	systemctl enable sshd
 	systemctl enable cronie
 	systemctl enable haveged.service
+	vim /etc/xdg/user-dirs.defaults 
+		/* Edit default directories to likeing */
 
 /* Add New User */
 	useradd -m -s $(which zsh) -G wheel,audio,video,optical,storage user_name
