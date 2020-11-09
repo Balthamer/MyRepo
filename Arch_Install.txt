@@ -1,0 +1,196 @@
+/* Check for UEFI */
+	ls /sys/firmware/efi/efivars
+
+/* For WiFi */
+	iwctl
+	[iwd]# wsc list
+	[iwd]# station <wlan> get-networks
+	[iwd]# station <wlan> connect <"Network Name"> <security>
+	[iwd]# quit
+
+/* Check interface status */
+	ip link
+	ping 1.1.1.1
+
+/* Update system clock */
+	timedatectl set-ntp true
+
+/* Make|Mount Partitions UEFI */
+	lsblk
+	cfdisk /dev/sd_
+		/* Use GPT */
+		/* EFI System 512M */
+		/* Linux swap <1x - 1.5x size of RAM */
+		/* Make the rest as Linux filesystem */
+	mkfs.vfat -F32 /dev/sd_1
+	mkswap /dev/sd_2
+	swapon /dev/sd_2
+	mkfs.ext4 /dev/sd_3
+	mount /dev/sd_3 /mnt
+	mkdir /mnt/boot
+	mount /dev/sd_1 /mnt/boot
+	
+/* Make|Mount Partitions non-UEFI */
+	lsblk
+	cfdisk /dev/sd_
+		/* Use DOS */
+		/* Linux swap <1x - 1.5x size of RAM */
+		/* Make the rest as Linux filesystem */
+	mkswap /dev/sd_1
+	swapon /dev/sd_1
+	mkfs.ext4 /dev/sd_2
+	mount /dev/sd_2 /mnt
+	
+/* Edit mirrors */
+	vim /etc/pacman.d/mirrorlist
+
+/* Install essential packages */
+	pacstrap /mnt base base-devel linux linux-firmware linux-headers
+	/* Add <efibootmgr> if using UEFI */
+
+/* Configure system */
+	genfstab -U /mnt >> /mnt/etc/fstab
+	arch-chroot /mnt
+	vim /etc/pacman.conf
+		/* Uncomment both lines of community and multilib */
+	pacman -Sy vi vim networkmanager man-db man-pages grub
+	systemctl enable NetworkManager
+	grub-install --efi-directory=/boot --target=x86_64-efi /dev/sd_
+	/* For non-UEFI systems */
+		grub-install --target=i386-pc /dev/sd_
+	/* edit grub to preference */
+		vim /etc/default/grub
+	grub-mkconfig -o /boot/grub/grub.cfg
+	ln -sf /usr/share/zoneinfo/America/Indianapolis /etc/localtime
+	hwclock --systohc
+	/* uncomment en_US.UTF-8 UTF-8 */
+		vim /etc/locale.gen
+	locale-gen
+	vim /etc/locale.conf
+		LANG=en_US.UTF-8
+	vim /etc/hostname
+		(what you want to name the host)
+	vim /etc/hosts
+		127.0.0.1		localhost
+		::1				localhost
+		127.0.1.1		(what you named the host).localdomain (what you named the host)
+	passwd
+		/* Give Root a password */
+/* Install other packages */
+	pacman -S {
+		zsh						// Z Shell
+		iw	 					// Wifi Connection Agent
+		tmux					// Terminal Multiplexer
+		gdb						// C Debuger
+        htop                    // System monitor
+		wget					// Retrevs HTTP|FTP Files
+		git						// Yeah, if you don't know...
+		pacman-contrib			// Extensions to Pacman
+		python-pmw				// Extensions for Tkinter
+		lsof					// List of devices/processes as files
+		dmidecode				// Check system hardware information
+		dialog					// Displays dialog boxes from shell scripts
+		notepadqq				// Notepad++ for Linux
+		zip						// Compression tool
+		unzip					// Compression tool
+		unrar					// Compression tool
+		p7zip					// Compression tool
+		traceroute				// Traces IP route
+		bind-tools				// dig, host, nslookup
+		nmap					// Network mapper
+		openssh					// SSH Server/Client
+		cronie					// Timed Jobs
+		xdg-user-dirs			// Helps make user directories
+		haveged					// RNG
+		intel-ucode|amd-ucode	// Processor Microcode
+		alsa-utils				// Sound server
+		alsa-plugins			// Sound server plugins
+		pulseaudio				// Sound front-end
+		pulseaudio-alsa			// Makes it work with ALSA
+		font-bh-ttf				// Fonts
+		gsfonts					// Fonts
+		ttf-bitstream-vera		// Fonts
+		ttf-dejavu				// Fonts
+		ttf-liberation			// Fonts
+		ttf-hanazono			// JP Fonts
+		screengrab				// Screenshot tool
+        feh                     // Image viewer
+		poppler					// Convert from PDF
+		zathura					// Read PDF
+		zathura-pdf-poppler		// Works with poppler
+        celluloid               // GUI frontend for mpv
+		texlive-most			// Make god tier documents (Over 2GB though)
+        firefox                 // Web browser
+        alacritty               // Terminal emulator
+        figlit                  // Make CLI banners
+	}
+/* Start new services */
+	chsh -s /bin/zsh
+	systemctl enable sshd
+	systemctl enable cronie
+	systemctl enable haveged.service
+
+/* Add New User */
+	useradd -m  -s $(which zsh) -G wheel,audio,video,optical,storage user_name
+	passwd user_name
+	visudo /etc/sudoers
+		/* uncomment %wheel ALL=(ALL) ALL */
+		/* To not have to use password with pacman: */
+		    user_name ALL=(ALL) NOPASSWD: /usr/bin/pacman
+
+/* Configure New User's Dot files */
+    mkdir /home/user_name/.config/alacritty
+    curl https://raw.githubusercontent.com/Balthamer/Dots/main/.tmux.conf > /home/user_name/.tmux.conf
+    curl https://raw.githubusercontent.com/Balthamer/Dots/main/.vimrc > /home/user_name/.vimrc
+    curl https://raw.githubusercontent.com/Balthamer/Dots/main/.zshrc > /home/user_name/.zshrc
+    curl https://raw.githubusercontent.com/Balthamer/Dots/main/alacritty.yml > /home/user_name/.config/alacritty/alacritty.yml
+
+/* Install GUI with Plasma */
+	pacman -S {
+		xorg 
+		plasma
+		dolphin
+		kmix
+		sddm
+		sddm-kcm
+		powerdevil
+	}
+	systemctl enable sddm
+	sudo vim /etc/sddm.conf.d/kde_settings.conf 
+	/*Under [General] enter: Numlock=on */
+
+/* Shutdown */
+	exit
+	shutdown 0
+	/* Remove media */
+
+/* Login as new user */
+	/* Connect to wifi */
+	iw|nmtui
+
+/* Install yay AUR Helper */
+	cd /opt
+	sudo git clone https://aur.archlinux.org/yay-git.git
+	sudo chown -R user_name:user_name yay-git
+	cd yay-git
+	makepkg -si
+	
+/* Printing */
+	sudo pacman -S print-manager cups system-config-printer
+
+/* Virtualization */
+	sudo pacman -S virtualbox-host-modules-arch
+	modprobe vboxdrv
+
+/* MySQL */
+	pacman -S mariadb
+	sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+	sudo systemctl enable mysql
+	sudo mysqladmin -u root password <password>
+	sudo mysql_secure_installation
+	mysql -u root -p
+		> CREATE USER '<user_name>'@'localhost' IDENTIFIED BY '<password>';
+		> GRANT ALL PRIVILEGES ON *.* TO <user_name>@'localhost';
+		> FLUSH PRIVILEGES;
+		> QUIT
+	pacman -S dbeaver
