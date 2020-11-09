@@ -72,58 +72,58 @@
 		(what you want to name the host)
 	vim /etc/hosts
 		127.0.0.1		localhost
-		::1				localhost
+		::1			localhost
 		127.0.1.1		(what you named the host).localdomain (what you named the host)
 	passwd
 		/* Give Root a password */
 /* Install other packages */
 	pacman -S {
-		zsh						// Z Shell
-		iw	 					// Wifi Connection Agent
-		tmux					// Terminal Multiplexer
-		gdb						// C Debuger
-        htop                    // System monitor
-		wget					// Retrevs HTTP|FTP Files
-		git						// Yeah, if you don't know...
-		pacman-contrib			// Extensions to Pacman
-		python-pmw				// Extensions for Tkinter
-		lsof					// List of devices/processes as files
-		dmidecode				// Check system hardware information
-		dialog					// Displays dialog boxes from shell scripts
-		notepadqq				// Notepad++ for Linux
-		zip						// Compression tool
-		unzip					// Compression tool
-		unrar					// Compression tool
-		p7zip					// Compression tool
-		traceroute				// Traces IP route
-		bind-tools				// dig, host, nslookup
-		nmap					// Network mapper
-		openssh					// SSH Server/Client
-		cronie					// Timed Jobs
-		xdg-user-dirs			// Helps make user directories
-		haveged					// RNG
+		zsh			// Z Shell
+		iw	 		// Wifi Connection Agent
+		tmux			// Terminal Multiplexer
+		gdb			// C Debuger
+        	htop                    // System monitor
+		wget			// Retrevs HTTP|FTP Files
+		git			// Yeah, if you don't know...
+		pacman-contrib		// Extensions to Pacman
+		python-pmw		// Extensions for Tkinter
+		lsof			// List of devices/processes as files
+		dmidecode		// Check system hardware information
+		dialog			// Displays dialog boxes from shell scripts
+		notepadqq		// Notepad++ for Linux
+		zip			// Compression tool
+		unzip			// Compression tool
+		unrar			// Compression tool
+		p7zip			// Compression tool
+		traceroute		// Traces IP route
+		bind-tools		// dig, host, nslookup
+		nmap			// Network mapper
+		openssh			// SSH Server/Client
+		cronie			// Timed Jobs
+		xdg-user-dirs		// Helps make user directories
+		haveged			// RNG
 		intel-ucode|amd-ucode	// Processor Microcode
-		alsa-utils				// Sound server
-		alsa-plugins			// Sound server plugins
-		pulseaudio				// Sound front-end
-		pulseaudio-alsa			// Makes it work with ALSA
-		font-bh-ttf				// Fonts
-		gsfonts					// Fonts
-		ttf-bitstream-vera		// Fonts
-		ttf-dejavu				// Fonts
-		ttf-liberation			// Fonts
-		ttf-hanazono			// JP Fonts
-		screengrab				// Screenshot tool
-        feh                     // Image viewer
-		poppler					// Convert from PDF
-		zathura					// Read PDF
-		zathura-pdf-poppler		// Works with poppler
-        celluloid               // GUI frontend for mpv
-		texlive-most			// Make god tier documents (Over 2GB though)
-        firefox                 // Web browser
-        alacritty               // Terminal emulator
-        figlit                  // Make CLI banners
-	}
+		alsa-utils		// Sound server
+		alsa-plugins		// Sound server plugins
+		pulseaudio		// Sound front-end
+		pulseaudio-alsa		// Makes it work with ALSA
+		font-bh-ttf		// Fonts
+		gsfonts			// Fonts
+		ttf-bitstream-vera	// Fonts
+		ttf-dejavu		// Fonts
+		ttf-liberation		// Fonts
+		ttf-hanazono		// JP Fonts
+		screengrab		// Screenshot tool
+        	feh                     // Image viewer
+		poppler			// Convert from PDF
+		zathura			// Read PDF
+		zathura-pdf-poppler	// Works with poppler
+        	celluloid               // GUI frontend for mpv
+		texlive-most		// Make god tier documents (Over 2GB though)
+        	firefox                 // Web browser
+        	alacritty               // Terminal emulator
+        	figlit                  // Make CLI banners
+		}
 /* Start new services */
 	chsh -s /bin/zsh
 	systemctl enable sshd
@@ -131,7 +131,7 @@
 	systemctl enable haveged.service
 
 /* Add New User */
-	useradd -m  -s $(which zsh) -G wheel,audio,video,optical,storage user_name
+	useradd -m -s $(which zsh) -G wheel,audio,video,optical,storage user_name
 	passwd user_name
 	visudo /etc/sudoers
 		/* uncomment %wheel ALL=(ALL) ALL */
