@@ -82,6 +82,7 @@
 		iw	 		// Wifi Connection Agent
 		tmux			// Terminal Multiplexer
 		gdb			// C Debuger
+		bc			// Basic calculator
         	htop                    // System monitor
 		wget			// Retrevs HTTP|FTP Files
 		git			// Yeah, if you don't know...
@@ -123,6 +124,7 @@
         	firefox                 // Web browser
         	alacritty               // Terminal emulator
         	figlit                  // Make CLI banners
+		powerline		// Make the terminal look nice
 		}
 /* Start new services */
 	chsh -s /bin/zsh
