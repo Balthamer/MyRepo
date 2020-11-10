@@ -137,7 +137,7 @@
 /* Add New User */
 	useradd -m -s $(which zsh) -G wheel,audio,video,optical,storage user_name
 	passwd user_name
-	visudo /etc/sudoers
+	visudo
 		/* uncomment %wheel ALL=(ALL) ALL */
 		/* To not have to use password with pacman: */
 		    user_name ALL=(ALL) NOPASSWD: /usr/bin/pacman
