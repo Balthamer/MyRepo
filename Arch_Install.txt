@@ -120,7 +120,6 @@
 		zathura			// Read PDF
 		zathura-pdf-poppler	// Works with poppler
         	celluloid               // GUI frontend for mpv
-		texlive-most		// Make god tier documents (Over 2GB though)
         	firefox                 // Web browser
         	alacritty               // Terminal emulator
         	figlit                  // Make CLI banners
