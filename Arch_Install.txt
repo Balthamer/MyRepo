@@ -51,8 +51,6 @@
 /* Configure system */
 	genfstab -U /mnt >> /mnt/etc/fstab
 	arch-chroot /mnt
-	vim /etc/pacman.conf
-		/* Uncomment both lines of community and multilib */
 	pacman -Sy vi vim networkmanager man-db man-pages grub
 	systemctl enable NetworkManager
 	grub-install --efi-directory=/boot --target=x86_64-efi /dev/sd_
@@ -76,6 +74,8 @@
 		127.0.1.1		(what you named the host).localdomain (what you named the host)
 	passwd
 		/* Give Root a password */
+	vim /etc/pacman.conf
+		/* Uncomment both lines of community and multilib */
 /* Install other packages */
 	pacman -Sy {
 		zsh			// Z Shell
@@ -142,7 +142,8 @@
 		    user_name ALL=(ALL) NOPASSWD: /usr/bin/pacman
 
 /* Configure New User's Dot files */
-    mkdir /home/user_name/.config/alacritty
+    su user_name
+    mkdir -p /home/user_name/.config/alacritty
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.tmux.conf > /home/user_name/.tmux.conf
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.vimrc > /home/user_name/.vimrc
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.zshrc > /home/user_name/.zshrc
@@ -159,8 +160,6 @@
 		powerdevil
 	}
 	systemctl enable sddm
-	sudo vim /etc/sddm.conf.d/kde_settings.conf 
-	/*Under [General] enter: Numlock=on */
 
 /* Shutdown */
 	exit
@@ -170,25 +169,29 @@
 /* Login as new user */
 	/* Connect to wifi */
 	iw|nmtui
-
+	sudo vim /etc/sddm.conf.d/kde_settings.conf 
+		/*Under [General] enter: Numlock=on */
+	
 /* Install yay AUR Helper */
 	cd /opt
 	sudo git clone https://aur.archlinux.org/yay-git.git
 	sudo chown -R user_name:user_name yay-git
 	cd yay-git
 	makepkg -si
+	yay -Sy cherrytree
 	
 /* Printing */
 	sudo pacman -S print-manager cups system-config-printer
 
 /* Virtualization */
-	sudo pacman -S virtualbox-host-modules-arch
+	sudo pacman -S virtualbox-host-modules-arch virtualbox
 	modprobe vboxdrv
 
 /* MySQL */
 	pacman -S mariadb
 	sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 	sudo systemctl enable mysql
+	sudo systemctl start mysql
 	sudo mysqladmin -u root password <password>
 	sudo mysql_secure_installation
 	mysql -u root -p
