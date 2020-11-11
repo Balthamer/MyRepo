@@ -77,7 +77,7 @@
 	passwd
 		/* Give Root a password */
 /* Install other packages */
-	pacman -S {
+	pacman -Sy {
 		zsh			// Z Shell
 		iw	 		// Wifi Connection Agent
 		tmux			// Terminal Multiplexer
@@ -122,7 +122,7 @@
         	celluloid               // GUI frontend for mpv
         	firefox                 // Web browser
         	alacritty               // Terminal emulator
-        	figlit                  // Make CLI banners
+        	figlet                  // Make CLI banners
 		powerline		// Make the terminal look nice
 		}
 /* Start new services|basic configs */
