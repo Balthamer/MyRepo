@@ -215,6 +215,7 @@
 	bettercap
 	bettercap-ui
 	burpsuite
+	cewl
 	dirb
 	birbuster
 	enum-shares
