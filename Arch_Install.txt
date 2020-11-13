@@ -220,7 +220,7 @@
 	enum-shares
 	enum4linux
 	ettercap
-	exploit-db|exploitdb
+	exploitdb
 	hashcat
 	hashcat-utils
 	howmanypeoplearearound
