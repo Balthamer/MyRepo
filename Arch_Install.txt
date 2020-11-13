@@ -79,6 +79,8 @@
 /* Install other packages */
 	pacman -Sy {
 		zsh			// Z Shell
+		zsh-autosuggestions	// Fish like autosuggestions
+		zsh-completions		// More Z Shell tab completions
 		iw	 		// Wifi Connection Agent
 		tmux			// Terminal Multiplexer
 		gdb			// C Debuger
