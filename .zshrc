@@ -1,3 +1,8 @@
+# Command Completion, use tab twice to use menu select
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+
 # Set History information
 export HISTFILE='.zhistory'
 export HISTSIZE=5000
