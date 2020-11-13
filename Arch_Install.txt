@@ -142,13 +142,13 @@
 		    user_name ALL=(ALL) NOPASSWD: /usr/bin/pacman
 
 /* Configure New User's Dot files */
-    su user_name
     mkdir -p /home/user_name/.config/alacritty
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.tmux.conf > /home/user_name/.tmux.conf
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.vimrc > /home/user_name/.vimrc
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.zshrc > /home/user_name/.zshrc
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/alacritty.yml > /home/user_name/.config/alacritty/alacritty.yml
-
+    chown -R user_name:user_name /home/user_name
+    
 /* Install GUI with Plasma */
 	pacman -S {
 		xorg 
@@ -162,41 +162,89 @@
 	systemctl enable sddm
 
 /* Shutdown */
-	exit
-	shutdown 0
-	/* Remove media */
+    exit
+    shutdown 0
+    /* Remove media */
 
 /* Login as new user */
-	/* Connect to wifi */
-	iw|nmtui
-	sudo vim /etc/sddm.conf.d/kde_settings.conf 
-		/*Under [General] enter: Numlock=on */
+    /* Connect to wifi */
+    iw|nmtui
+    sudo vim /etc/sddm.conf.d/kde_settings.conf 
+        /*Under [General] enter: Numlock=on */
 	
 /* Install yay AUR Helper */
-	cd /opt
-	sudo git clone https://aur.archlinux.org/yay-git.git
-	sudo chown -R user_name:user_name yay-git
-	cd yay-git
-	makepkg -si
-	yay -Sy cherrytree
+    cd /opt
+    sudo git clone https://aur.archlinux.org/yay-git.git
+    sudo chown -R user_name:user_name yay-git
+    cd yay-git
+    makepkg -si
+    yay -Sy cherrytree exiftool
 	
 /* Printing */
-	sudo pacman -S print-manager cups system-config-printer
+    sudo pacman -S print-manager cups system-config-printer
 
 /* Virtualization */
-	sudo pacman -S virtualbox-host-modules-arch virtualbox
-	modprobe vboxdrv
+    sudo pacman -S virtualbox-host-modules-arch virtualbox
+    modprobe vboxdrv
 
 /* MySQL */
-	pacman -S mariadb
-	sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-	sudo systemctl enable mysql
-	sudo systemctl start mysql
-	sudo mysqladmin -u root password <password>
-	sudo mysql_secure_installation
-	mysql -u root -p
-		> CREATE USER '<user_name>'@'localhost' IDENTIFIED BY '<password>';
-		> GRANT ALL PRIVILEGES ON *.* TO <user_name>@'localhost';
-		> FLUSH PRIVILEGES;
-		> QUIT
-	pacman -S dbeaver
+    pacman -S mariadb
+    sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+    sudo systemctl enable mysql
+    sudo systemctl start mysql
+    sudo mysqladmin -u root password <password>
+    sudo mysql_secure_installation
+    mysql -u root -p
+	> CREATE USER '<user_name>'@'localhost' IDENTIFIED BY '<password>';
+	> GRANT ALL PRIVILEGES ON *.* TO <user_name>@'localhost';
+	> FLUSH PRIVILEGES;
+	> QUIT
+    pacman -S dbeaver
+	
+/* Blackarch */
+    curl -O https://blackarch.org/strap.sh
+    chmod +x strap.sh
+    sudo ./strap.sh
+    rm strap.sh
+    sudo pacman -Syy
+    sudo pacman -S {
+    	aircrack-ng
+	airgeddon
+	autopsy
+	beef
+	bettercap
+	bettercap-ui
+	burpsuite
+	dirb
+	birbuster
+	enum-shares
+	enum4linux
+	ettercap
+	exploit-db|exploitdb
+	hashcat
+	hashcat-utils
+	howmanypeoplearearound
+	hping
+	hydra
+	john
+	kismet
+	kismet2earch
+	maltego
+	metasploit
+	netdiscover
+	nikto
+	owasp-bywaf
+	owasp-zsc
+	rainbowcrack
+	recon-ng
+	sambascan
+	samdump2
+	set
+	skiptracer
+	smbmap
+	sqlmap
+	steghide
+	stepic
+	wpscan
+	zmap
+    }
