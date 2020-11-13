@@ -192,7 +192,7 @@
     sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
     sudo systemctl enable mysql
     sudo systemctl start mysql
-    sudo mysqladmin -u root password <password>
+    sudo mysqladmin -u root password
     sudo mysql_secure_installation
     mysql -u root -p
 	> CREATE USER '<user_name>'@'localhost' IDENTIFIED BY '<password>';
