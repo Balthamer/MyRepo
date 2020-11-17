@@ -88,6 +88,7 @@
         	htop                    // System monitor
 		wget			// Retrevs HTTP|FTP Files
 		git			// Yeah, if you don't know...
+		tree			// CLI view of file structure
 		pacman-contrib		// Extensions to Pacman
 		python-pmw		// Extensions for Tkinter
 		lsof			// List of devices/processes as files
@@ -144,7 +145,9 @@
 		/* To not have to use password with pacman: */
 		    user_name ALL=(ALL) NOPASSWD: /usr/bin/pacman
 
-/* Configure New User's Dot files */
+/* Configure New User's settings */
+    vim /etc/fstab
+    	/* tmpfs /home/user_name/.cache tmpfs nodev,nosuid,size=2G 0 0 */
     mkdir -p /home/user_name/.config/alacritty
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.tmux.conf > /home/user_name/.tmux.conf
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.vimrc > /home/user_name/.vimrc
