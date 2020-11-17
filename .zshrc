@@ -14,6 +14,7 @@ setopt HIST_SAVE_NO_DUPS
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias tree='tree -C'
 alias ip='ip -c'
 alias ll='ls -lAh'
 alias py='python3'
