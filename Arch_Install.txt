@@ -84,6 +84,7 @@
 		iw	 		// Wifi Connection Agent
 		tmux			// Terminal Multiplexer
 		gdb			// C Debuger
+		ghex			// Lightweight Hex editor
 		bc			// Basic calculator
         	htop                    // System monitor
 		wget			// Retrevs HTTP|FTP Files
