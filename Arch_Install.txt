@@ -188,7 +188,20 @@
     yay -Sy cherrytree exiftool
 	
 /* Printing */
-    sudo pacman -S print-manager cups system-config-printer
+    sudo pacman -S {
+    	print-manager 				// Needed
+	cups 					// Needed
+	system-config-printer 			// Needed
+	foomatic-db-engine 			// Could be needed
+	foomatic-db 				// Could be needed
+	foomatic-db-ppds 			// could be needed
+	foomatic-db-nonfree 			// Could be needed
+	foomatic-db-nonfree-ppds 		// Could be needed
+	ghostscript 				// Could be needed
+	hplip					// Use if you have an HP printer
+	}
+    systemctl enable cups.service
+    systemctl start cup.service
 
 /* Virtualization */
     sudo pacman -S virtualbox-host-modules-arch virtualbox
