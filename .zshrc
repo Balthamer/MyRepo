@@ -4,7 +4,7 @@ compinit
 zstyle ':completion:*' menu select
 
 # Set History information
-export HISTFILE='.zhistory'
+export HISTFILE='/home/balthamer/.zhistory'
 export HISTSIZE=5000
 export SAVEHIST=5000
 setopt HIST_SAVE_NO_DUPS
@@ -25,5 +25,10 @@ alias clock='while true; do tput clear; date +"%H : %M : %S" | figlet; sleep 1; 
 alias ..='cd ..'
 alias myip='echo -n "Private IP: " && ip -br addr show wlp2s0 | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" && echo -n "Public IP: " && dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}"'
 
-powerline-daemon -q
-. /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
+case "$TERM" in
+    xterm-color|*-256color|xterm) powerline-daemon -q
+    . /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
+esac
+case "$TERM" in
+    linux) PS1='%F{cyan}%n@%m%~>>%F{white} '
+esac
