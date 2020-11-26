@@ -129,6 +129,7 @@
         	alacritty               // Terminal emulator
         	figlet                  // Make CLI banners
 		powerline		// Make the terminal look nice
+		powerline-vim		// Make vim have powerline
 		}
 /* Start new services|basic configs */
 	chsh -s $(which zsh)
