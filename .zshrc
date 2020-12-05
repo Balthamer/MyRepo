@@ -27,7 +27,7 @@ alias myip='echo -n "Private IP: " && ip -br addr show wlp2s0 | grep -Eo "([0-9]
 
 case "$TERM" in
     xterm-color|*-256color|xterm) powerline-daemon -q
-    . /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
+        . /usr/share/powerline/bindings/zsh/powerline.zsh
 esac
 case "$TERM" in
     linux) PS1='%F{cyan}%n@%m%~>>%F{white} '
