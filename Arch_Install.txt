@@ -121,9 +121,10 @@
 		ttf-hanazono		// JP Fonts
 		screengrab		// Screenshot tool
         	feh                     // Image viewer
-		poppler			// Convert from PDF
+		poppler			// PDF library tool
 		zathura			// Read PDF
 		zathura-pdf-poppler	// Works with poppler
+		pandoc			// Markup converter
         	celluloid               // GUI frontend for mpv
         	firefox                 // Web browser
         	alacritty               // Terminal emulator
