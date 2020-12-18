@@ -122,9 +122,10 @@
 		screengrab		// Screenshot tool
         	feh                     // Image viewer
 		poppler			// PDF library tool
-		zathura			// Read PDF
-		zathura-pdf-poppler	// Works with poppler
+		zathura			// Read PDF with VIM commands
+		zathura-pdf-poppler	// Make zathura work with poppler
 		pandoc			// Markup converter
+		texlive-most		// Academia grade documents 2G install though, (<3 beamer with markdown)
         	celluloid               // GUI frontend for mpv
         	firefox                 // Web browser
         	alacritty               // Terminal emulator
