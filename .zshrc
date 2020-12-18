@@ -17,7 +17,7 @@ setopt HIST_SAVE_NO_DUPS
 [[ $- != *i* ]] && return
 
 # Adds all the ls colors to the environment variables
-eval $(dircolors ~/.dir_colors)
+eval $(dircolors)
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 alias ls='ls --color=auto'
