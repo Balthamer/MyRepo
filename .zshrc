@@ -3,6 +3,10 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 
+# Set xterm to 256 color
+TERM='xterm-256color'
+export TERM
+
 # Set History information
 export HISTFILE='/home/balthamer/.zhistory'
 export HISTSIZE=5000
