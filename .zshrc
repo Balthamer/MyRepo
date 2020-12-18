@@ -16,6 +16,10 @@ setopt HIST_SAVE_NO_DUPS
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Adds all the ls colors to the environment variables
+eval $(dircolors ~/.dir_colors)
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias tree='tree -C'
