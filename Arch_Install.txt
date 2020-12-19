@@ -95,6 +95,7 @@
 		lsof			// List of devices/processes as files
 		dmidecode		// Check system hardware information
 		dialog			// Displays dialog boxes from shell scripts
+		rofi			// Window switcher and dmenu upgrade
 		notepadqq		// Notepad++ for Linux
 		zip			// Compression tool
 		unzip			// Compression tool
