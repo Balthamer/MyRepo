@@ -157,7 +157,7 @@
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.tmux.conf > /home/user_name/.tmux.conf
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.vimrc > /home/user_name/.vimrc
     curl https://raw.githubusercontent.com/Balthamer/Dots/main/.zshrc > /home/user_name/.zshrc
-    curl https://raw.githubusercontent.com/Balthamer/Dots/main/alacritty.yml > /home/user_name/.config/alacritty/alacritty.yml
+    curl https://raw.githubusercontent.com/Balthamer/Dots/main/.config/alacrity/alacritty.yml > /home/user_name/.config/alacritty/alacritty.yml
     sed 's/balthamer/user_name/g' .zshrc
     chown -R user_name:user_name /home/user_name
     
