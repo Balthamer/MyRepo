@@ -88,6 +88,7 @@
 		bc			// Basic calculator
         	htop                    // System monitor
 		wget			// Retrevs HTTP|FTP Files
+		usbutils		// Tools to query usb devices
 		git			// Yeah, if you don't know...
 		tree			// CLI view of file structure
 		pacman-contrib		// Extensions to Pacman
