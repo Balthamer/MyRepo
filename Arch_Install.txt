@@ -106,6 +106,7 @@
 		bind-tools		// dig, host, nslookup
 		whois			// Server registration information
 		nmap			// Network mapper
+		gnu-netcat		// Swiss Army Knife of TCP/IP
 		openssh			// SSH Server/Client
 		openvpn			// It's a VPN, and it's open
 		cronie			// Timed Jobs
