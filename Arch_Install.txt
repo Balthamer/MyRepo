@@ -276,4 +276,5 @@
 	stepic
 	wpscan
 	zmap
+	nfs-utils
     }
