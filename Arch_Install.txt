@@ -107,6 +107,7 @@
 		whois			// Server registration information
 		nmap			// Network mapper
 		openssh			// SSH Server/Client
+		openvpn			// It's a VPN, and it's open
 		cronie			// Timed Jobs
 		xdg-user-dirs		// Helps make user directories
 		haveged			// RNG
