@@ -123,6 +123,7 @@
 		ttf-dejavu		// Fonts
 		ttf-liberation		// Fonts
 		ttf-hanazono		// JP Fonts
+		ttf-baekmuk		// Korean Fonts
 		screengrab		// Screenshot tool
         	feh                     // Image viewer
 		poppler			// PDF library tool
