@@ -92,7 +92,6 @@
 		git			// Yeah, if you don't know...
 		tree			// CLI view of file structure
 		pacman-contrib		// Extensions to Pacman
-		python-pmw		// Extensions for Tkinter
 		lsof			// List of devices/processes as files
 		dmidecode		// Check system hardware information
 		dialog			// Displays dialog boxes from shell scripts
