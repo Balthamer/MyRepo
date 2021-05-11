@@ -137,6 +137,7 @@
         	figlet                  // Make CLI banners
 		powerline		// Make the terminal look nice
 		powerline-vim		// Make vim have powerline
+		ranger			// CLI File Manager
 		}
 /* Start new services|basic configs */
 	chsh -s $(which zsh)
