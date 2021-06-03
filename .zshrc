@@ -32,11 +32,6 @@ alias tmux='TERM=xterm-256color tmux'
 alias clock='while true; do tput clear; date +"%H : %M : %S" | figlet; sleep 1; done'
 alias ..='cd ..'
 alias myip='echo -n "Private IP: " && ip -br addr show wlp2s0 | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" && echo -n "Public IP: " && dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}"'
+alias mlp='/home/balthamer/Scripts/mlp.sh'
 
-case "$TERM" in
-    xterm-color|*-256color|xterm) powerline-daemon -q
-        . /usr/share/powerline/bindings/zsh/powerline.zsh
-esac
-case "$TERM" in
-    linux) PS1='%F{cyan}%n@%m%~>>%F{white} '
-esac
+PS1='%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%1~%f%F{red}]%f '
