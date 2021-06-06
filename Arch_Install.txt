@@ -116,7 +116,6 @@
 		alsa-plugins		// Sound server plugins
 		pulseaudio		// Sound front-end
 		pulseaudio-alsa		// Makes it work with ALSA
-		font-bh-ttf		// Fonts
 		gsfonts			// Fonts
 		ttf-bitstream-vera	// Fonts
 		ttf-dejavu		// Fonts
