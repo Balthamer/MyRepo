@@ -14,8 +14,6 @@ filetype indent on
 set foldmethod=indent
 set foldlevel=20
 set wrap linebreak nolist
-nnoremap <Down> gj
-nnoremap <Up> gk
 set laststatus=2
 let g:tex_flavor = "latex"
 
@@ -32,3 +30,10 @@ autocmd FileType tex inoremap ;2 <Enter>\subsection{<++>}<Enter><Enter><++><Esc>
 autocmd FileType tex inoremap ;3 <Enter>\subsubsection{<++>}<Enter><Enter><++><Esc>/<++><Enter>"_c4l
 autocmd FileType tex inoremap ;f \begin{figure}[H]<Enter>\centering<Enter>\includegraphics[width=<++>\textwidth]{<++>}<Enter>\caption{<++>\label{<++>}}<Enter>\end{figure}<Enter><++><Esc>/<++><Enter>"_c4l
 autocmd FileType tex inoremap ;F \begin{figure}[H]<Enter>\centering<Enter>\includegraphics[width=<++>\textwidth]{<++>}<Enter>\caption{<++>\label{<++>}}<Enter>\end{figure}<Enter><++><Esc>?usepackage<Enter>o\usepackage{graphicx}<Enter>\usepackage{float}<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;e \begin{enumerate}[noitemsep]<Enter>\item<Space><++><Enter>\end{enumerate}<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;E \begin{enumerate}[noitemsep]<Enter>\item<Space><++><Enter>\end{enumerate}<Esc>/usepackage<Enter>o\usepackage{enumitem}<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;l \begin{itemize}[noitemsep]<Enter>\item<Space><++><Enter>\end{itemize}<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;L \begin{itemize}[noitemsep]<Enter>\item<Space><++><Enter>\end{itemize}<Esc>/usepackage<Enter>o\usepackage{enumitem}<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;I \item<Space>
+autocmd FileType tex inoremap ;c \begin{multicols}{<++>}<Enter><++><Enter>\end{multicols}<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;C \begin{multicols}{<++>}<Enter><++><Enter>\end{multicols}<Esc>/usepackage<Enter>o\usepackage{multicol}<Esc>/<++><Enter>"_c4l
