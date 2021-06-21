@@ -78,66 +78,66 @@
 		/* Uncomment both lines of community and multilib */
 /* Install other packages */
 	pacman -Sy {
-		zsh			// Z Shell
+		zsh			        // Z Shell
 		zsh-autosuggestions	// Fish like autosuggestions
 		zsh-completions		// More Z Shell tab completions
-		iw	 		// Wifi Connection Agent
-		tmux			// Terminal Multiplexer
-		gdb			// C Debuger
-		ghex			// Lightweight Hex editor
-		bc			// Basic calculator
-        	htop                    // System monitor
-		wget			// Retrevs HTTP|FTP Files
-		usbutils		// Tools to query usb devices
-		git			// Yeah, if you don't know...
-		tree			// CLI view of file structure
+		tmux			    // Terminal Multiplexer
+		gdb			        // C Debuger
+		ghex			    // Lightweight Hex editor
+		bc			        // Basic calculator
+        htop                // System monitor
+		wget		        // Retrevs HTTP|FTP Files
+		usbutils	        // Tools to query usb devices
+		git			        // Yeah, if you don't know...
+		tree		        // CLI view of file structure
 		pacman-contrib		// Extensions to Pacman
-		lsof			// List of devices/processes as files
-		dmidecode		// Check system hardware information
-		dialog			// Displays dialog boxes from shell scripts
-		rofi			// Window switcher and dmenu upgrade
-		notepadqq		// Notepad++ for Linux
-		zip			// Compression tool
-		unzip			// Compression tool
-		unrar			// Compression tool
-		p7zip			// Compression tool
-		traceroute		// Traces IP route
-		bind-tools		// dig, host, nslookup
-		whois			// Server registration information
-		nmap			// Network mapper
-		gnu-netcat		// Swiss Army Knife of TCP/IP
-		openssh			// SSH Server/Client
-		openvpn			// It's a VPN, and it's open
-		cronie			// Timed Jobs
+		lsof			    // List of devices/processes as files
+		dmidecode		    // Check system hardware information
+		dialog			    // Displays dialog boxes from shell scripts
+		notepadqq		    // Notepad++ for Linux
+		zip			        // Compression tool
+		unzip			    // Compression tool
+		unrar			    // Compression tool
+		p7zip			    // Compression tool
+		traceroute		    // Traces IP route
+		bind-tools		    // dig, host, nslookup
+		whois			    // Server registration information
+		nmap			    // Network mapper
+		gnu-netcat		    // Swiss Army Knife of TCP/IP
+		openssh			    // SSH Server/Client
+		openvpn			    // It's a VPN, and it's open
+		cronie			    // Timed Jobs
 		xdg-user-dirs		// Helps make user directories
-		haveged			// RNG
-		intel-ucode|amd-ucode	// Processor Microcode
-		alsa-utils		// Sound server
+		haveged			    // RNG
+		amd||intel-ucode	// Processor Microcode
+		alsa-utils		    // Sound server
 		alsa-plugins		// Sound server plugins
-		pulseaudio		// Sound front-end
+		pulseaudio		    // Sound front-end
 		pulseaudio-alsa		// Makes it work with ALSA
-		gsfonts			// Fonts
+		gsfonts			    // Fonts
 		ttf-bitstream-vera	// Fonts
-		ttf-dejavu		// Fonts
+		ttf-dejavu		    // Fonts
 		ttf-liberation		// Fonts
 		ttf-hanazono		// JP Fonts
-		ttf-baekmuk		// Korean Fonts
-		screengrab		// Screenshot tool
-        	feh                     // Image viewer
-		poppler			// PDF library tool
-		zathura			// Read PDF with VIM commands
+		ttf-baekmuk		    // Korean Fonts
+		screengrab		    // Screenshot tool
+        sxiv                // Extensable Image Viewer
+		poppler			    // PDF library tool
+		zathura			    // Read PDF with VIM commands
 		zathura-pdf-poppler	// Make zathura work with poppler
-		pandoc			// Markup converter
+		pandoc			    // Markup converter
 		texlive-most		// Academia grade documents 2G install though, (<3 beamer with markdown)
-		biber			// Glorious Bibliographies made easy, lots of dependencies though
-        	celluloid               // GUI frontend for mpv
-        	firefox                 // Web browser
-        	alacritty               // Terminal emulator
-        	figlet                  // Make CLI banners
-		powerline		// Make the terminal look nice
-		powerline-vim		// Make vim have powerline
-		ranger			// CLI File Manager
+		biber			    // Glorious Bibliographies made easy, lots of dependencies though
+        firefox             // Web browser
+        alacritty           // Terminal emulator
+        figlet              // Make CLI banners
+		ranger			    // CLI File Manager
+        python-pywal        // Wallpaper based color management
+        mpd                 // Music Player Deamon
+        ncmpcpp             // Music Player
+        cherrytree          // Note taker
 		}
+
 /* Start new services|basic configs */
 	chsh -s $(which zsh)
 	systemctl enable sshd
@@ -187,6 +187,7 @@
     iw|nmtui
     sudo vim /etc/sddm.conf.d/kde_settings.conf 
         /*Under [General] enter: Numlock=on */
+    systemctl --user enable mpd
 	
 /* Install yay AUR Helper */
     cd /opt
@@ -194,7 +195,7 @@
     sudo chown -R user_name:user_name yay-git
     cd yay-git
     makepkg -si
-    yay -Sy cherrytree exiftool
+    yay -Sy exiftool
 	
 /* Printing */
     sudo pacman -S {
