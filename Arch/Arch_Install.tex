@@ -1,0 +1,71 @@
+\documentclass[10pt,letterpaper]{article}
+
+\edef\restoreparindent{\parindent=\the\parindent\relax}
+\usepackage{parskip}
+\usepackage{enumitem}
+\restoreparindent
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+
+\title{Arch Linux Install}
+\author{Michael D. Allred}
+
+\begin{document}
+
+\maketitle
+
+\section{Check for UEFI}
+
+The first task is to ensure that the EFI files are present, this guide will be
+for an EFI install. As long as there is output of the ls command then the files
+are present then this guide is applicable. If the files are not present, then
+the Arch wiki will be the guide to follow.
+\begin{itemize}[noitemsep]
+    \item ls /sys/firmware/efi/efivars
+\end{itemize}
+
+\section{WiFi Connection}
+
+It is preferable to install Arch with a LAN, but if that is not an option then
+iwctl can be used to connect to WiFi. The [\,iwd]\# denotes being inside of the
+iwctl environment. Inside the environment, use \texttt{wsc list} to show what
+wlan interfaces that are able to be used, make note of that interface as it
+will be used in the following commands and will replace \textbf{\textit{wlan}}.
+With the interface selected, run the \texttt{station wlan get-networks} command
+to list the networks that can be connected to as well as the type of
+authentication used by that network (\,hidden networks will not show up and if
+a hidden network is to be used, skip this step). The name of the network that
+will be used will replace \textbf{\textit{network\_name}} and the
+authentication type will replace \textbf{\textit{security}}. The most common
+type of security will be psk or preshared key, this will be the WiFi password.
+The final command for WiFi will be putting the information gathered into one
+command and will be responsable for connecting, note that
+\textbf{\textit{network\_name}} must be inside quotation.
+\begin{itemize}[noitemsep]
+    \item iwctl
+    \item wsc list
+    \item station \textbf{\textit{wlan}} get-networks
+    \item station \textbf{\textit{wlan}} connect ``\textbf{\textit{network\_name}}'' \textbf{\textit{security}}
+    \item quit
+\end{itemize}
+
+\section{Confirm Internet}
+
+The arch linux iso is minimal and only has enough to get users started.
+Everything, including the Linux Kernel will need to be downloaded from the
+repositories. To make sure that everything is in order use the \texttt{ping}
+command to test for internet connectivity. Part of the connectivity is
+ensureing the timeing of operations, run the \texttt{timedatectl set-ntp true}
+command to set the system clock to the correct time.
+\begin{itemize}[noitemsep]
+    \item ping archlinux.org
+    \item timedatectl set-ntp true
+\end{itemize}
+
+
+\section{Makeing and Mounting EFI Partitions}
+
+
+
+\end{document}

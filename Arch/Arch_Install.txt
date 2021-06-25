@@ -20,118 +20,91 @@
 	cfdisk /dev/sd_
 		/* Use GPT */
 		/* EFI System 512M */
-		/* Linux swap <1x - 1.5x size of RAM */
 		/* Make the rest as Linux filesystem */
-	mkfs.vfat -F32 /dev/sd_1
-	mkswap /dev/sd_2
-	swapon /dev/sd_2
-	mkfs.ext4 /dev/sd_3
-	mount /dev/sd_3 /mnt
-	mkdir /mnt/boot
-	mount /dev/sd_1 /mnt/boot
-	
-/* Make|Mount Partitions non-UEFI */
-	lsblk
-	cfdisk /dev/sd_
-		/* Use DOS */
-		/* Linux swap <1x - 1.5x size of RAM */
-		/* Make the rest as Linux filesystem */
-	mkswap /dev/sd_1
-	swapon /dev/sd_1
-	mkfs.ext4 /dev/sd_2
+	mkfs.vfat -F32 /dev/sda1
+	mkfs.ext4 /dev/sda2
 	mount /dev/sd_2 /mnt
+	mkdir /mnt/boot
+	mount /dev/sda1 /mnt/boot
 	
-/* Edit mirrors */
-	vim /etc/pacman.d/mirrorlist
-
 /* Install essential packages */
-	pacstrap /mnt base base-devel linux linux-firmware linux-headers
-	/* Add <efibootmgr> if using UEFI */
+	pacstrap /mnt base base-devel linux linux-firmware linux-headers efibootmgr
 
 /* Configure system */
 	genfstab -U /mnt >> /mnt/etc/fstab
 	arch-chroot /mnt
 	pacman -Sy vi vim networkmanager man-db man-pages grub
 	systemctl enable NetworkManager
-	grub-install --efi-directory=/boot --target=x86_64-efi /dev/sd_
-	/* For non-UEFI systems */
-		grub-install --target=i386-pc /dev/sd_
-	/* edit grub to preference */
-		vim /etc/default/grub
-	grub-mkconfig -o /boot/grub/grub.cfg
+	grub-install --efi-directory=/boot --target=x86_64-efi
+    sed -i '/s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
+    grub-mkconfig -o /boot/grub/grub.cfg
 	ln -sf /usr/share/zoneinfo/America/Indianapolis /etc/localtime
 	hwclock --systohc
-	/* uncomment en_US.UTF-8 UTF-8 */
-		vim /etc/locale.gen
+    echo 'en_US.UTF-8' >> /etc/locale.gen
 	locale-gen
-	vim /etc/locale.conf
-		LANG=en_US.UTF-8
-	vim /etc/hostname
-		(what you want to name the host)
-	vim /etc/hosts
-		127.0.0.1		localhost
-		::1			localhost
-		127.0.1.1		(what you named the host).localdomain (what you named the host)
-	passwd
-		/* Give Root a password */
-	vim /etc/pacman.conf
-		/* Uncomment both lines of community and multilib */
+    echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+    echo 'HOST_NAME' > /etc/hostname
+    echo '127.0.0.1     localhost' >> /etc/hosts
+    echo '::1           localhost' >> /etc/hosts
+    echo '127.0.1.1     HOST_NAME.localdomain HOST_NAME
+	vim /etc/pacman.conf /* Uncomment both lines of community and multilib */
+		
 /* Install other packages */
 	pacman -Sy {
-		zsh			        // Z Shell
-		zsh-autosuggestions	// Fish like autosuggestions
-		zsh-completions		// More Z Shell tab completions
-		tmux			    // Terminal Multiplexer
-		gdb			        // C Debuger
-		ghex			    // Lightweight Hex editor
-		bc			        // Basic calculator
+        zsh                 // Z Shell
+        zsh-autosuggestions // Fish like autosuggestions
+        zsh-completions     // More Z Shell tab completions
+        tmux                // Terminal Multiplexer
+        gdb                 // C Debuger
+        ghex                // Lightweight Hex editor
+        bc                  // Basic calculator
         htop                // System monitor
-		wget		        // Retrevs HTTP|FTP Files
-		usbutils	        // Tools to query usb devices
-		git			        // Yeah, if you don't know...
-		tree		        // CLI view of file structure
-		pacman-contrib		// Extensions to Pacman
-		lsof			    // List of devices/processes as files
-		dmidecode		    // Check system hardware information
-		dialog			    // Displays dialog boxes from shell scripts
-		notepadqq		    // Notepad++ for Linux
-		zip			        // Compression tool
-		unzip			    // Compression tool
-		unrar			    // Compression tool
-		p7zip			    // Compression tool
-		traceroute		    // Traces IP route
-		bind-tools		    // dig, host, nslookup
-		whois			    // Server registration information
-		nmap			    // Network mapper
-		gnu-netcat		    // Swiss Army Knife of TCP/IP
-		openssh			    // SSH Server/Client
-		openvpn			    // It's a VPN, and it's open
-		cronie			    // Timed Jobs
-		xdg-user-dirs		// Helps make user directories
-		haveged			    // RNG
-		amd||intel-ucode	// Processor Microcode
-		alsa-utils		    // Sound server
-		alsa-plugins		// Sound server plugins
-		pulseaudio		    // Sound front-end
-		pulseaudio-alsa		// Makes it work with ALSA
-		gsfonts			    // Fonts
-		ttf-bitstream-vera	// Fonts
-		ttf-dejavu		    // Fonts
-		ttf-liberation		// Fonts
-		ttf-hanazono		// JP Fonts
-		ttf-baekmuk		    // Korean Fonts
-		screengrab		    // Screenshot tool
+        wget                // Retrevs HTTP|FTP Files
+        usbutils            // Tools to query usb devices
+        git                 // Yeah, if you don't know...
+        tree                // CLI view of file structure
+        pacman-contrib      // Extensions to Pacman
+        lsof                // List of devices/processes as files
+        dmidecode           // Check system hardware information
+        dialog              // Displays dialog boxes from shell scripts
+        notepadqq           // Notepad++ for Linux
+        zip                 // Compression tool
+        unzip               // Compression tool
+        unrar               // Compression tool
+        p7zip               // Compression tool
+        traceroute          // Traces IP route
+        bind-tools          // dig, host, nslookup
+        whois               // Server registration information
+        nmap                // Network mapper
+        gnu-netcat          // Swiss Army Knife of TCP/IP
+        openssh             // SSH Server/Client
+        openvpn             // It's a VPN, and it's open
+        cronie              // Timed Jobs
+        xdg-user-dirs       // Helps make user directories
+        haveged             // RNG
+        amd||intel-ucode    // Processor Microcode
+        alsa-utils          // Sound server
+        alsa-plugins        // Sound server plugins
+        pulseaudio          // Sound front-end
+        pulseaudio-alsa     // Makes it work with ALSA
+        gsfonts             // Fonts
+        ttf-bitstream-vera  // Fonts
+        ttf-dejavu          // Fonts
+        ttf-liberation      // Fonts
+        ttf-hanazono        // JP Fonts
+        ttf-baekmuk         // Korean Fonts
+        screengrab          // Screenshot tool
         sxiv                // Extensable Image Viewer
-		poppler			    // PDF library tool
-		zathura			    // Read PDF with VIM commands
-		zathura-pdf-poppler	// Make zathura work with poppler
-		pandoc			    // Markup converter
-		texlive-most		// Academia grade documents 2G install though, (<3 beamer with markdown)
-		biber			    // Glorious Bibliographies made easy, lots of dependencies though
+        poppler             // PDF library tool
+        zathura             // Read PDF with VIM commands
+        zathura-pdf-poppler // Make zathura work with poppler
+        pandoc              // Markup converter
+        texlive-most        // Academia grade documents 2G install though, (<3 beamer with markdown)
+        biber               // Glorious Bibliographies made easy, lots of dependencies though
         firefox             // Web browser
         alacritty           // Terminal emulator
         figlet              // Make CLI banners
-		ranger			    // CLI File Manager
+        ranger              // CLI File Manager
         python-pywal        // Wallpaper based color management
         mpd                 // Music Player Deamon
         ncmpcpp             // Music Player
@@ -143,8 +116,9 @@
 	systemctl enable sshd
 	systemctl enable cronie
 	systemctl enable haveged.service
-	vim /etc/xdg/user-dirs.defaults 
-		/* Edit default directories to likeing */
+    sed -i '/DESKTOP/d' /etc/xdg/user-dirs.defaults
+    sed -i '/TEMPLATES/d' /etc/xdg/user-dirs.defaults
+    sed -i '/PUBLIC/d' /etc/xdg/user-dirs.defaults
 
 /* Add New User */
 	useradd -m -s $(which zsh) -G wheel,audio,video,optical,storage user_name
@@ -155,15 +129,6 @@
 		    user_name ALL=(ALL) NOPASSWD: /usr/bin/pacman
 
 /* Configure New User's settings */
-    vim /etc/fstab
-    	/* tmpfs /home/user_name/.cache tmpfs nodev,nosuid,size=2G 0 0 */
-    mkdir -p /home/user_name/.config/alacritty
-    curl https://raw.githubusercontent.com/Balthamer/Dots/main/.tmux.conf > /home/user_name/.tmux.conf
-    curl https://raw.githubusercontent.com/Balthamer/Dots/main/.vimrc > /home/user_name/.vimrc
-    curl https://raw.githubusercontent.com/Balthamer/Dots/main/.zshrc > /home/user_name/.zshrc
-    curl https://raw.githubusercontent.com/Balthamer/Dots/main/.config/alacrity/alacritty.yml > /home/user_name/.config/alacritty/alacritty.yml
-    sed 's/balthamer/user_name/g' .zshrc
-    chown -R user_name:user_name /home/user_name
     
 /* Install GUI with Plasma */
 	pacman -S {
@@ -178,7 +143,7 @@
 	systemctl enable sddm
 
 /* Shutdown */
-    exit
+    exitj
     shutdown 0
     /* Remove media */
 
