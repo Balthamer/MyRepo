@@ -50,6 +50,8 @@
 	vim /etc/pacman.conf /* Uncomment both lines of community and multilib */
 		
 /* Install other packages */
+    curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/startup.sh | bash
+    --or--
 	pacman -Sy {
         zsh                 // Z Shell
         zsh-autosuggestions // Fish like autosuggestions
@@ -121,6 +123,7 @@
     sed -i '/PUBLIC/d' /etc/xdg/user-dirs.defaults
 
 /* Add New User */
+    curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/new_user.sh | bash
 	useradd -m -s $(which zsh) -G wheel,audio,video,optical,storage user_name
 	passwd user_name
 	visudo
