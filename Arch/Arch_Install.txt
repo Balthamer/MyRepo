@@ -50,8 +50,6 @@
 	vim /etc/pacman.conf /* Uncomment both lines of community and multilib */
 		
 /* Install other packages */
-    curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/startup.sh | bash
-    --or--
 	pacman -Sy {
         zsh                 // Z Shell
         zsh-autosuggestions // Fish like autosuggestions
@@ -124,6 +122,7 @@
 
 /* Add New User */
     curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/new_user.sh | bash
+    -- or --
 	useradd -m -s $(which zsh) -G wheel,audio,video,optical,storage user_name
 	passwd user_name
 	visudo
@@ -131,8 +130,22 @@
 		/* To not have to use password with pacman: */
 		    user_name ALL=(ALL) NOPASSWD: /usr/bin/pacman
 
-/* Configure New User's settings */
-    
+    /* Configure New User's settings */
+
+        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/zshrc > /home/$user/.zshrc
+        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/xinitrc > /home/$user/.xinitrc
+        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/vimrc > /home/$user/.vimrc
+        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/tmux.conf > /home/$user/.tmux.conf
+        mkdir -p /home/$user/.config/alacritty
+        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/alacritty/alacritty.yml > /home/$user/.config/alacritty/alacritty.yml
+        mkdir /home/$user/.config/awesome
+        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/awesome/rc.lua > /home/$user/.config/awesome/rc.lua
+        mkdir /home/$user/.config/mpd
+        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/mpd/mpd.conf > /home/$user/.config/mpd/mpd.conf
+        mkdir /home/$user/.config/ranger
+        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/ranger/rc.conf > /home/$user/.config/ranger/rc.conf
+        chown -R $user:$user /home/$user
+
 /* Install GUI with Plasma */
 	pacman -S {
 		xorg 
@@ -175,16 +188,16 @@
 	
 /* Printing */
     sudo pacman -S {
-    	print-manager 				// Needed
-	cups 					// Needed
-	system-config-printer 			// Needed
-	foomatic-db-engine 			// Could be needed
-	foomatic-db 				// Could be needed
-	foomatic-db-ppds 			// could be needed
-	foomatic-db-nonfree 			// Could be needed
-	foomatic-db-nonfree-ppds 		// Could be needed
-	ghostscript 				// Could be needed
-	hplip					// Use if you have an HP printer
+    print-manager               // Needed
+	cups 					    // Needed
+	system-config-printer       // Needed
+	foomatic-db-engine          // Could be needed
+	foomatic-db                 // Could be needed
+	foomatic-db-ppds            // could be needed
+	foomatic-db-nonfree         // Could be needed
+	foomatic-db-nonfree-ppds    // Could be needed
+	ghostscript                 // Could be needed
+	hplip                       // Use if you have an HP printer
 	}
     systemctl enable cups.service
     systemctl start cup.service
@@ -214,7 +227,7 @@
     rm strap.sh
     sudo pacman -Syy
     sudo pacman -S {
-    	aircrack-ng
+    aircrack-ng
 	airgeddon
 	autopsy
 	beef
@@ -256,3 +269,5 @@
 	zmap
 	nfs-utils
     }
+
+
