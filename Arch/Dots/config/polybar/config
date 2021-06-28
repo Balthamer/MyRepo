@@ -19,8 +19,8 @@ height = 20
 radius = 0.0
 fixed-center = true
 
-;override-redirect = true
-;border-bottom-size = 0
+override-redirect = true
+border-bottom-size = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
