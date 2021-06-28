@@ -1,0 +1,23 @@
+#! /bin/sh
+
+# Autostart
+pgrep -x sxhkd > /dev/null || sxhkd &
+picom -b -i 1.0 --no-vsync &
+xwallpaper --zoom ~/.config/wall.jpg &
+
+# Workspaces
+bspc monitor -d I II III IV V
+
+# Node Config
+bspc config border_width    2
+bspc config window_gap      6
+bspc config split_ratio     0.5
+
+# Source The Colors From Pywal
+. "${HOME}/.cache/wal/colors.sh"
+
+# Set the border colors.
+bspc config normal_border_color "$color1"
+bspc config active_border_color "$color2"
+bspc config focused_border_color "$color15"
+bspc config presel_feedback_color "$color1"

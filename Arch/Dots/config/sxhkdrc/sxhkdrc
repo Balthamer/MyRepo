@@ -1,0 +1,51 @@
+### WM Independent Hotkeys ###
+### Source file from /usr/share/doc/bspwm/examples/sxhkdrc ###
+
+## Launcher Hotkeys
+
+# Terminal Emulator
+alt + Return
+	kitty
+
+# Program Launcher
+alt + p
+	rofi -show drun
+
+# Make SXHKD Reload Its Configuration Files:
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+## BSPWM Hotkeys
+
+# Quit/Restart BSPWM
+alt + shift + {q,r}
+	bspc {quit,wm -r}
+
+# Close Window
+alt + c
+	bspc node -c
+
+# Swap The Current Node And The Biggest Window
+alt + space
+	bspc node -s biggest.window
+
+# Move/Change Nodes
+
+alt + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# Focus Or Send To The Given Desktop
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Expand A Window By Moving One Of Its Side Outward
+alt + ctrl + {h,j,k,l}
+	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
+
+# Contract A Window By Moving One Of Its Side Inward
+alt + ctrl + shift + {h,j,k,l}
+	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
+
+# Move A Floating Window
+alt + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
