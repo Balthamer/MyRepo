@@ -2,9 +2,8 @@
 
 # Autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
-picom -b -i 1.0 --no-vsync &
-xwallpaper --zoom ~/.config/wall.jpg &
-wal -a 80 -qi /home/balthamer/.config/wall.jpg
+picom -b -i 1.0 &
+wal -R
 /home/balthamer/.config/polybar/launch.sh
 
 # Workspaces

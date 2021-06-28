@@ -5,7 +5,7 @@
 
 # Terminal Emulator
 alt + Return
-	kitty
+	alacritty
 
 # Program Launcher
 alt + p
