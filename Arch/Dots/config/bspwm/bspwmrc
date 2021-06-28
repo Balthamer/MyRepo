@@ -4,6 +4,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 picom -b -i 1.0 --no-vsync &
 xwallpaper --zoom ~/.config/wall.jpg &
+/home/balthamer/.config/polybar/launch.sh
 
 # Workspaces
 bspc monitor -d I II III IV V
