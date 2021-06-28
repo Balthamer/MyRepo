@@ -106,9 +106,12 @@
         ranger              // CLI File Manager
         ueberzug            // Image preview for ranger
         python-pywal        // Wallpaper based color management
+        feh                 // Wallpaper setter for pywal
         mpd                 // Music Player Deamon
         ncmpcpp             // Music Player
         cherrytree          // Note taker
+        qutebrowser         // Vim based browser
+        python-adblock      // Adblocker for qutebrowser
 		}
 
 /* Start new services|basic configs */
@@ -136,15 +139,21 @@
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/xinitrc > /home/$user/.xinitrc
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/vimrc > /home/$user/.vimrc
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/tmux.conf > /home/$user/.tmux.conf
-        mkdir -p /home/$user/.config/alacritty
+        mkdir -p /home/$user/.config/{alacritty,mpd,ranger,bspwm,sxhkd,picom}
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/alacritty/alacritty.yml > /home/$user/.config/alacritty/alacritty.yml
-        mkdir /home/$user/.config/awesome
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/awesome/rc.lua > /home/$user/.config/awesome/rc.lua
-        mkdir /home/$user/.config/mpd
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/mpd/mpd.conf > /home/$user/.config/mpd/mpd.conf
-        mkdir /home/$user/.config/ranger
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/ranger/rc.conf > /home/$user/.config/ranger/rc.conf
         chown -R $user:$user /home/$user
+
+/*Install GUI with bspwm */
+    pacman -S {
+        xorg-server
+        xorg-xinit
+        bspwm
+        sxhkd
+        picom
+    yay -S polybar
 
 /* Install GUI with Plasma */
 	pacman -S {
@@ -157,14 +166,6 @@
 		powerdevil
 	}
 	systemctl enable sddm
-
-/*Install GUI with Awesome */
-    pacman -S {
-        xorg-server
-        xorg-xinit
-        awesome
-        picom
-        xwallpaper
 
 /* Shutdown */
     exitj
