@@ -13,11 +13,14 @@ alert = #bd2c40
 [bar/bar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 27
+height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
 fixed-center = true
+
+;override-redirect = true
+;border-bottom-size = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -167,7 +170,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini

@@ -34,6 +34,10 @@ alt + space
 alt + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
+# Toggle Fullscreen
+alt + f
+    bspc node --state '~fullscreen'
+
 # Focus Or Send To The Given Desktop
 alt + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
