@@ -2,13 +2,21 @@
 ; Default config /usr/share/doc/polybar/config
 
 [colors]
+;background = ${xrdb:color0:#222}
+;background-alt = #444
+;foreground = ${xrdb:color7:#222}
+;foreground-alt = #555
+;primary = #ffb52a
+;secondary = #e60053
+;alert = #bd2c40
+
 background = ${xrdb:color0:#222}
 background-alt = #444
 foreground = ${xrdb:color7:#222}
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
 
 [bar/bar]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -43,15 +51,13 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm 
 modules-center = mpd
-modules-right = date
+modules-right = battery date
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-
-;override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
