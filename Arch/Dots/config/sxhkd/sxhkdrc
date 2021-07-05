@@ -57,3 +57,11 @@ alt + {Left,Down,Up,Right}
 # Toggle Floating
 alt + shift + f
     bspc node --state '~floating'
+
+# Focus next monitor
+alt + {period,comma}
+    bspc monitor --focus {next,prev}
+
+# Move node to next monitor
+alt + shift + {period,comma}
+    bspc node --to-monitor {next,prev} && bspc monitor --focus {next,prev}
