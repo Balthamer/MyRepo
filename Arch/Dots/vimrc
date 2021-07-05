@@ -1,8 +1,8 @@
+colorscheme wal
 set nocompatible
 set number
 set relativenumber
 syntax on
-colorscheme ron
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -24,7 +24,7 @@ autocmd FileType tex inoremap ;b \textbf{}<Space><++><Esc>F}i
 autocmd FileType tex inoremap ;i \textit{}<Space><++><Esc>F}i
 autocmd FileType tex inoremap ;u \underline{}<Space><++><Esc>F}i
 autocmd FileType tex inoremap ;p \parencite{}.<Space><++><Esc>F}i
-autocmd FileType tex inoremap ;P \parencite{<++>}.<Space><++><Esc>?usepackage<Enter>o\usepackage[backend=biber,style=apa,autocite=inline]{biblatex}<Enter>\addbibresource{<++>}<Esc>/end{document}<Enter>O<Enter>\printbibliography<Enter><Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;P \parencite{<++>}.<Space><++><Esc>?usepackage<Enter>o\usepackage[backend=biber,style=apa,autocite=inline]{biblatex}<Enter>\addbibresource{bibliography.bib}<Esc>/end{document}<Enter>O<Enter>\printbibliography<Enter><Esc>/<++><Enter>"_c4l
 autocmd FileType tex inoremap ;1 <Enter>\section{<++>}<Enter><Enter><++><Esc>/<++><Enter>"_c4l
 autocmd FileType tex inoremap ;2 <Enter>\subsection{<++>}<Enter><Enter><++><Esc>/<++><Enter>"_c4l
 autocmd FileType tex inoremap ;3 <Enter>\subsubsection{<++>}<Enter><Enter><++><Esc>/<++><Enter>"_c4l
