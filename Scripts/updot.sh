@@ -14,3 +14,4 @@ curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/ra
 curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/polybar/config > /home/balthamer/.config/polybar/config
 curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/polybar/launch.sh > /home/balthamer/.config/polybar/launch.sh
 curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/picom/picom.conf > /home/balthamer/.config/picom/picom.conf
+curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/starship.toml > /home/balthamer/.config/starship.toml

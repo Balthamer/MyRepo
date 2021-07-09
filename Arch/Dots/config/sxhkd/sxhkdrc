@@ -53,3 +53,15 @@ super + ctrl + shift + {h,j,k,l}
 # Move A Floating Window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Toggle Floating
+alt + shift + f
+    bspc node --state '~floating'
+
+# Focus next monitor
+alt + {period,comma}
+    bspc monitor --focus {next,prev}
+
+# Move node to next monitor
+alt + shift + {period,comma}
+    bspc node --to-monitor {next,prev} && bspc monitor --focus {next,prev}
