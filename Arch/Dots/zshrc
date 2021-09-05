@@ -33,9 +33,14 @@ alias clock='while true; do tput clear; date +"%H : %M : %S" | figlet; sleep 1; 
 alias ..='cd ..'
 alias myip='echo -n "Private IP: " && ip -br addr show wlp2s0 | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" && echo -n "Public IP: " && dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}"'
 alias mlp='/home/balthamer/Scripts/mlp.sh'
-alias chwall='/home/balthamer/Scripts/chwall.sh'
+alias wal='wal -a 80 -qi'
+alias pm='pulsemixer'
+alias office='libreoffice'
 
 PS1='%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%1~%f%F{red}]%f '
+
+# Starship prompt
+eval "$(starship init zsh)"
 
 # Import colorscheme from wal
 (cat ~/.cache/wal/sequences &)
