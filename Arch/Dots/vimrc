@@ -13,6 +13,7 @@ filetype detect
 filetype indent on
 set foldmethod=indent
 set foldlevel=20
+set fillchars=fold:\ 
 set wrap linebreak nolist
 set laststatus=2
 let g:tex_flavor = "latex"
