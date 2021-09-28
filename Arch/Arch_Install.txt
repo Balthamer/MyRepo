@@ -112,6 +112,8 @@
         cherrytree          // Note taker
         qutebrowser         // Vim based browser
         python-adblock      // Adblocker for qutebrowser
+        bat                 // Copy cat with wings
+        lsd                 // lsDeluxe pritty directory lists
 		}
 
 /* Start new services|basic configs */
@@ -185,7 +187,7 @@
     sudo chown -R user_name:user_name yay-git
     cd yay-git
     makepkg -si
-    yay -Sy exiftool
+    yay -Sy nerd-fonts-hack exiftool 
 	
 /* Printing */
     sudo pacman -S {
