@@ -14,6 +14,18 @@ scrolling:
   history: 5000
 
 font:
+  normal:
+    family: Hack Nerd Font Mono
+    style: Regular
+    #  bold:
+    #    family: Nerd
+    #      style: Bold
+    #  italic:
+    #    family: Nerd
+    #      style: Italic
+    #  bold_italic:
+    #    family: Nerd
+    #      style: Bold Italic
   size: 10.0
   offset:
     x: 0

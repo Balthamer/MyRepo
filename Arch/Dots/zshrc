@@ -20,12 +20,12 @@ setopt HIST_SAVE_NO_DUPS
 eval $(dircolors)
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-alias ls='ls --color=auto'
+alias ls='lsd'
 alias grep='grep --color=auto'
 alias tree='tree -C'
 alias ip='ip -c'
-alias ll='ls -lh'
-alias la='ls -lAh'
+alias ll='lsd -lh'
+alias la='lsd -lAh'
 alias py='python3'
 alias pacman='sudo pacman'
 alias tmux='TERM=xterm-256color tmux'

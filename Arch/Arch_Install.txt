@@ -112,10 +112,18 @@
         cherrytree          // Note taker
         qutebrowser         // Vim based browser
         python-adblock      // Adblocker for qutebrowser
-        bat                 // Copy cat with wings
+        bat                 // Cat clone with syntax highlights and git integration
         lsd                 // lsDeluxe pritty directory lists
 		}
 
+/* Install yay AUR Helper */
+    cd /opt
+    sudo git clone https://aur.archlinux.org/yay-git.git
+    sudo chown -R user_name:user_name yay-git
+    cd yay-git
+    makepkg -si
+    yay -Sy nerd-fonts-hack
+	
 /* Start new services|basic configs */
 	chsh -s $(which zsh)
 	systemctl enable sshd
@@ -181,14 +189,11 @@
         /*Under [General] enter: Numlock=on */
     systemctl --user enable mpd
 	
-/* Install yay AUR Helper */
-    cd /opt
-    sudo git clone https://aur.archlinux.org/yay-git.git
-    sudo chown -R user_name:user_name yay-git
-    cd yay-git
-    makepkg -si
-    yay -Sy nerd-fonts-hack exiftool 
-	
+/* Vim Plugins */
+    mkdir -p ~/.vim/pack/vendor/start
+    cd ~/.vim/pack/vendor/start
+    git clone https://github.com/dylanaraps/wal.vim.git
+
 /* Printing */
     sudo pacman -S {
     print-manager               // Needed
@@ -272,5 +277,5 @@
 	zmap
 	nfs-utils
     }
-
+    yay -S exiftool
 

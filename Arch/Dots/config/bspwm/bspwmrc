@@ -25,3 +25,7 @@ bspc config presel_feedback_color "$color1"
 
 # Polybar Gap
 bspc config top_padding 16
+
+# After loading everything else...
+# Autostart
+redshift

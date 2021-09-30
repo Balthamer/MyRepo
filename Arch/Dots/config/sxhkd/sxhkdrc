@@ -54,14 +54,13 @@ super + ctrl + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Toggle Floating
-super + shift + f
-    bspc node --state '~floating'
+# Brightness Control
+super + {F3,F2}
+    brightnessctl s 10%{+,-}
 
-# Focus next monitor
-super + {period,comma}
-    bspc monitor --focus {next,prev}
+# Volume Control
+super + {F11,F12}
+    pulsemixer --change-volume {-,+}5
 
-# Move node to next monitor
-super + shift + {period,comma}
-    bspc node --to-monitor {next,prev} && bspc monitor --focus {next,prev}
+super + F10
+    pulsemixer --toggle-mute

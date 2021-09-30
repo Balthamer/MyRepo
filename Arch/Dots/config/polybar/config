@@ -51,13 +51,13 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm 
 modules-center = mpd
-modules-right = battery date
+modules-right = volume backlight battery  date
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
-;wm-restack = bspwm
+wm-restack = bspwm
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -136,47 +136,27 @@ label = %date% %time%
 
 [module/battery]
 type = internal/battery
-battery = BAT0
+battery = CMB0
 adapter = AC
 full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+label-charging = Charging-%percentage%%
+label-discharging = Discharging-%percentage%%
+label-full = Fully Charged
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 0
 margin-bottom = 0
 
-; vim:ft=dosini
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <label>
+label = Light-%percentage%%
+
+[module/volume]
+type = internal/pulseaudio
+label-volume = Volume-%percentage%%
+label-muted = Muted
