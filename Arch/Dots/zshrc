@@ -26,6 +26,7 @@ alias tree='tree -C'
 alias ip='ip -c'
 alias ll='lsd -lh'
 alias la='lsd -lAh'
+alias lt='lsd --tree'
 alias py='python3'
 alias pacman='sudo pacman'
 alias tmux='TERM=xterm-256color tmux'
@@ -36,6 +37,7 @@ alias mlp='/home/balthamer/Scripts/mlp.sh'
 alias wal='wal -a 80 -qi'
 alias pm='pulsemixer'
 alias office='libreoffice'
+alias cat='bat'
 
 PS1='%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%1~%f%F{red}]%f '
 
@@ -43,4 +45,4 @@ PS1='%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%1~%f%F{red}]%f
 eval "$(starship init zsh)"
 
 # Import colorscheme from wal
-(cat ~/.cache/wal/sequences &)
+(/usr/bin/cat ~/.cache/wal/sequences &)
