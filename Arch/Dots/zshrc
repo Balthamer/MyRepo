@@ -39,6 +39,7 @@ alias pm='pulsemixer'
 alias xclip='xclip -selection clipboard'
 alias office='libreoffice'
 alias cat='bat'
+alias xclip='xclip -selection clipboard'
 
 PS1='%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%1~%f%F{red}]%f '
 

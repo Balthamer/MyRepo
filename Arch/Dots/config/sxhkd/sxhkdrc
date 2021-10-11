@@ -54,6 +54,18 @@ super + ctrl + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# Toggle Floating
+super + shift + f
+    bspc node --state '~floating'
+
+# Focus next monitor
+super + {period,comma}
+    bspc monitor --focus {next,prev}
+
+# Move node to next monitor
+super + shift + {period,comma}
+    bspc node --to-monitor {next,prev} && bspc monitor --focus {next,prev}
+
 # Brightness Control
 super + {F3,F2}
     brightnessctl s 10%{+,-}
