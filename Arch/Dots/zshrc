@@ -36,6 +36,7 @@ alias myip='echo -n "Private IP: " && ip -br addr show wlp2s0 | grep -Eo "([0-9]
 alias mlp='/home/balthamer/Scripts/mlp.sh'
 alias wal='wal -a 80 -qi'
 alias pm='pulsemixer'
+alias xclip='xclip -selection clipboard'
 alias office='libreoffice'
 alias cat='bat'
 
