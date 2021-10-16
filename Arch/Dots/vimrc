@@ -1,17 +1,28 @@
 "Basic Config
-set nocompatible
 set number
 set relativenumber
 syntax on
 colorscheme wal
+set wrap linebreak nolist
+set laststatus=2
+
+"Change location of viminfo
+set viminfofile=$HOME/.vim/viminfo
+
+"Setup Tabs
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
 set autoindent
+set smartindent
+
+"Settingup filetype for autocommands
 filetype plugin on
 filetype detect
 filetype indent on
+
+"Seting Folds (mostly for python)
 set foldlevel=20
 set fillchars=fold:\ 
 function! FoldMethod(lnum)
@@ -20,8 +31,10 @@ function! FoldMethod(lnum)
 endfunction
 set foldmethod=expr
 set foldexpr=FoldMethod(v:lnum)
-set wrap linebreak nolist
-set laststatus=2
+
+"Searching highlights everything, space to remove highlight
+set incsearch hlsearch
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 "LaTeX Autocommands
 let g:tex_flavor = "latex"
@@ -74,4 +87,3 @@ autocmd FileType html inoremap ;s <span></span><++><Esc>10hi
 
 "CSS Autocommands
 autocmd Filetype css setlocal tabstop=1 shiftwidth=1 softtabstop=1
-
