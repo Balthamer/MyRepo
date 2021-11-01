@@ -35,8 +35,12 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # Toggle Fullscreen
-super + f
+super + shift + f
     bspc node --state '~fullscreen'
+
+# Toggle Floating
+super + f
+    bspc node --state '~floating'
 
 # Focus Or Send To The Given Desktop
 super + {_,shift + }{1-9,0}
@@ -53,18 +57,6 @@ super + ctrl + shift + {h,j,k,l}
 # Move A Floating Window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# Toggle Floating
-super + shift + f
-    bspc node --state '~floating'
-
-# Focus next monitor
-super + {period,comma}
-    bspc monitor --focus {next,prev}
-
-# Move node to next monitor
-super + shift + {period,comma}
-    bspc node --to-monitor {next,prev} && bspc monitor --focus {next,prev}
 
 # Brightness Control
 super + {F3,F2}
