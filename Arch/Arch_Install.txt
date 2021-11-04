@@ -114,6 +114,7 @@
         python-adblock      // Adblocker for qutebrowser
         bat                 // Cat clone with syntax highlights and git integration
         lsd                 // lsDeluxe pritty directory lists
+        rsync               // sync/backup files from remote anywhere
 		}
 
 /* Install yay AUR Helper */
