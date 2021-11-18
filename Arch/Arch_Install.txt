@@ -54,6 +54,7 @@
         zsh                 // Z Shell
         zsh-autosuggestions // Fish like autosuggestions
         zsh-completions     // More Z Shell tab completions
+        ntp                 // Network Time Protocol
         tmux                // Terminal Multiplexer
         gdb                 // C Debuger
         ghex                // Lightweight Hex editor
