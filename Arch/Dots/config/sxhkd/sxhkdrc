@@ -30,7 +30,6 @@ super + space
 	bspc node -s biggest.window
 
 # Move/Change Nodes
-
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
@@ -66,5 +65,6 @@ super + {F3,F2}
 super + {F11,F12}
     pulsemixer --change-volume {-,+}5
 
+# Volume Mute
 super + F10
     pulsemixer --toggle-mute
