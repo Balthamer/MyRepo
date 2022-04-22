@@ -1,14 +1,27 @@
 #!/bin/bash
 ## Make LaTeX PDF
 
+## Pull out the file name
+file=$(echo $1 | cut -d '.' -f 1)
+
 ## Compiles the PDF
-pdflatex $1.tex -halt-on-error
-biber $1 
-pdflatex $1.tex -halt-on-error
+pdflatex $file.tex -halt-on-error
+biber $file 
+pdflatex $file.tex -halt-on-error
 
 ## Removes unwanted files
 ## -aux-directorys=/tmp does not work on Linux
-rm *.aux *.bbl *.bcf *.blg *.log *.run.xml
+[[ -e $file.aux ]] && rm $file.aux
+[[ -e $file.bbl ]] && rm $file.bbl
+[[ -e $file.bcf ]] && rm $file.bcf
+[[ -e $file.blg ]] && rm $file.blg
+[[ -e $file.log ]] && rm $file.log
+[[ -e $file.xml ]] && rm $file.xml
+[[ -e $file.nav ]] && rm $file.nav
+[[ -e $file.out ]] && rm $file.out
+[[ -e $file.snm ]] && rm $file.snm
+[[ -e $file.toc ]] && rm $file.toc
 
-## Display the compiled PDF only if not already running
-test -n "$(ps | grep zathura)" && sleep 0 || zathura $1.pdf &
+## Display the compiled PDF in the correct mode
+[[ -n "$(head -n 1 $file.tex | grep beamer)" ]] && zathura $file.pdf --mode=presentation &
+[[ -n "$(head -n 1 $file.tex | grep article)" ]] && zathura $file.pdf --mode=fullscreen &
