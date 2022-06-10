@@ -1,0 +1,54 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[affil-it]{authblk}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{background}
+\usepackage{titlesec}
+\usepackage{titling}
+%%>++<%%
+
+\edef\restoreparindent{\parindent=\the\parindent\relax}
+\restoreparindent
+
+\titleformat{\section}{\LARGE\bfseries}{}{0em}{}
+
+\fancypagestyle{ivy}{
+    \fancyhf{}
+    % Class name, e.g: NETI 104: Networking
+    \fancyhead[L]{\textbf{<++>}}
+    \fancyhead[R]{\textbf{---Page: \thepage---}}
+    \fancyfoot[C]{\includegraphics[width=0.25\textwidth]{../Banner.jpg}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{ivy}
+
+% Assignment name, e.g: Cisco Packet Tracer\\Basic Configuration
+\title{\vspace*{\fill}\Huge{\textbf{<++>}}} 
+\author{\Large{Ivy Tech Cyber Academy}}
+% Class name, e.g: NETI 104
+\affil{\Large{<++>}} 
+\date{}
+
+\begin{document}
+\SetBgContents{\includegraphics[width=0.8\textwidth]{../Seal.jpg}}
+\SetBgAngle{0}
+\SetBgScale{1.25}
+\SetBgOpacity{.15}
+
+\begin{titlingpage}
+    \maketitle
+    % Give an overview of what is in the assignment
+    \begin{abstract}
+        <++>\vspace*{\fill}
+    \end{abstract}
+\end{titlingpage}
+
+\section{<++>}
+
+<++>
+
+\end{document}

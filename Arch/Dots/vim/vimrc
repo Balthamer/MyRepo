@@ -1,0 +1,113 @@
+"Basic Config
+set number
+set relativenumber
+syntax on
+colorscheme wal
+set wrap linebreak nolist
+set laststatus=2
+
+"Change location of viminfo
+set viminfofile=$HOME/.vim/viminfo
+
+"Setup Tabs
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set autoindent
+set smartindent
+
+"Settingup filetype for autocommands
+filetype plugin on
+filetype detect
+filetype indent on
+
+"Seting Folds (mostly for python)
+set foldlevel=20
+set fillchars=fold:\ 
+function! FoldMethod(lnum)
+    let l:indent = max([indent(a:lnum+1), indent(a:lnum)])
+    return l:indent / &shiftwidth
+endfunction
+set foldmethod=expr
+set foldexpr=FoldMethod(v:lnum)
+
+"Searching highlights everything, space to remove highlight
+set incsearch hlsearch
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" LaTeX Autocommands
+" SA - Start new Article
+" SB - Start new Beamer
+" SI - Start new Ivy Tech Article
+" b - Bold
+" i - Italic
+" u - Underline
+" P - First time paragraph citation
+" p - Paragraph citation
+" 1 - New Section
+" 2 - New subsection
+" 3 - New subsubsection
+" fr - New Beamer frame
+" Fg - First time new image with caption
+" fg - New image with caption
+" E - First time numbered list
+" e - Numbered list
+" L - First time bullet list
+" l - Bullet list
+" I - New list item
+let g:tex_flavor = "latex"
+autocmd FileType tex inoremap ;; <ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;SA <ESC>:r ~/.vim/templates/article.tex<Enter><ESC>kdd/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;SB <ESC>:r ~/.vim/templates/beamer.tex<Enter><ESC>kdd/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;SI <ESC>:r ~/.vim/templates/ivy_tech.tex<Enter><ESC>kdd/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;b \textbf{}<Space><++><ESC>F}i
+autocmd FileType tex inoremap ;i \textit{}<Space><++><ESC>F}i
+autocmd FileType tex inoremap ;u \underline{}<Space><++><ESC>F}i
+autocmd FileType tex inoremap ;p \parencite{}.<Space><++><ESC>F}i
+autocmd FileType tex inoremap ;P <++><ESC>?>++<<Enter>o\usepackage[backend=biber,style=apa,autocite=inline]{biblatex}<Enter>\addbibresource{biblio.bib}<ESC>/end{document}<Enter>O<Enter>\printbibliography<Enter><ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;1 <Enter>\section{<++>}<Enter><Enter><++><Enter><ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;2 <Enter>\subsection{<++>}<Enter><Enter><++><ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;3 <Enter>\subsubsection{<++>}<Enter><Enter><++><ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;fr \begin{frame}<Enter>\frametitle{}<Enter><++><Enter>\end{frame}<ESC>kkf}i
+autocmd FileType tex inoremap ;fg \begin{figure}[H]<Enter>\centering<Enter>\includegraphics[width=<++>\textwidth]{<++>}<Enter>\caption{<++>\label{<++>}}<Enter>\end{figure}<Enter><++><ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;Fg <++><ESC>?>++<<Enter>o\usepackage{graphicx}<Enter>\usepackage{float}<ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;e \begin{enumerate}[noitemsep]<Enter>\item<Space><++><Enter>\end{enumerate}<ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;E <ESC>?>++<<Enter>o\usepackage{enumitem}<ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;l \begin{itemize}[noitemsep]<Enter>\item<Space><++><Enter>\end{itemize}<ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;L <++><ESC>?>++<<Enter>o\usepackage{enumitem}<ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;I <Enter>\item<Space>
+autocmd FileType tex inoremap ;c \begin{multicols}{<++>}<Enter><++><Enter>\end{multicols}<ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;C \begin{multicols}{<++>}<Enter><++><Enter>\end{multicols}<ESC>/usepackage<Enter>o\usepackage{multicol}<ESC>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ;v \begin{tcolorbox}<Enter>\begin{verbatim}<Enter>\end{verbatim}<Enter>\end{tcolorbox}<ESC>kO
+autocmd FileType tex inoremap ;V <++><ESC>?>++<<Enter>o\usepackage{tcolorbox}<ESC>/<++><Enter>"_c4l
+
+"HTML Autocommands
+autocmd Filetype html,php setlocal tabstop=1 shiftwidth=1 softtabstop=1
+autocmd FileType html,php inoremap ;; <ESC>:g/^\s*$/d<Enter>/<++><Enter>"_c4l
+autocmd FileType html,php inoremap ;S <!DOCTYPE html><Enter><html><Enter><head><Enter><meta charset="UTF-8"/><Enter><meta name="viewport"<Space>content="width=device-width,initial-scale=1.0"/><Enter><meta<Space>http-equiv="X-UA-Compatible"<Space>content="ie=edge"/><Enter><title><++></title><Enter><link<Space>rel="stylesheet"<Space>href="<++>/css/styles.css"/><Enter></head><Enter><body><Enter><++><Enter></body><Enter></html><ESC>/<++><Enter>"_c4l
+autocmd FileType html,php inoremap ;1 <h1></h1><++><ESC>8hi
+autocmd FileType html,php inoremap ;2 <h2></h2><++><ESC>8hi
+autocmd FileType html,php inoremap ;3 <h3></h3><++><ESC>8hi
+autocmd FileType html,php inoremap ;p <p></p><++><ESC>7hi
+autocmd FileType html,php inoremap ;B <strong></strong><++><ESC>12hi
+autocmd FileType html,php inoremap ;E <em></em><++><ESC>8hi
+autocmd FileType html,php inoremap ;I <img src=""<Space>alt="<++>"><++><ESC>$16hi
+autocmd FileType html,php inoremap ;b <br><Enter>
+autocmd FileType html,php inoremap ;a <a href=""><++></a><++><ESC>13hi
+autocmd FileType html,php inoremap ;A <a target="_blank"<Space>href=""><++></a><++><ESC>13hi
+autocmd FileType html,php inoremap ;l <ul><Enter><li></li><Enter><++><Enter></ul><Enter><++><ESC>3k$4hi
+autocmd FileType html,php inoremap ;L <ol><Enter><li></li><Enter><++><Enter></ol><Enter><++><ESC>3k$4hi
+autocmd FileType html,php inoremap ;i <li></li><Enter><++><ESC>k$4hi
+autocmd FileType html,php inoremap ;ta <table><Enter><Enter></table><Enter><++><ESC>2ki
+autocmd FileType html,php inoremap ;tr <tr><Enter><Enter></tr><Enter><++><ESC>2ki
+autocmd FileType html,php inoremap ;th <th></th><Enter><++><ESC>k$4hi
+autocmd FileType html,php inoremap ;td <td></td><Enter><++><ESC>k$4hi
+autocmd FileType html,php inoremap ;fs <form<Space>action=""<Space>method=""><Enter><Enter><br><Enter><button<Space>type="submit">Submit</button><Enter></form><Enter><++><ESC>4ki
+autocmd FileType html,php inoremap ;fl <label<Space>for=""><++></label><Enter><++><ESC>k$13hi
+autocmd FileType html,php inoremap ;fi <input<Space>type=""<Space>name="<++>"<Space>id="<++>"/><Enter><++><ESC>k$24hi
+autocmd FileType html,php inoremap ;d <div><Enter><Enter></div><++><ESC>ki
+autocmd FileType html,php inoremap ;s <span></span><++><ESC>10hi
+
+"CSS Autocommands
+autocmd Filetype css setlocal tabstop=1 shiftwidth=1 softtabstop=1
