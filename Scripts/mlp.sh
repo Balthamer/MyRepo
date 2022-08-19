@@ -4,9 +4,10 @@
 ## Pull out the file name
 file=$(echo $1 | cut -d '.' -f 1)
 
-## Compiles the PDF
+## Compiles the PDF, runs three times to generate correct ToC page numbers
 pdflatex $file.tex -halt-on-error
 biber $file 
+pdflatex $file.tex -halt-on-error
 pdflatex $file.tex -halt-on-error
 
 ## Removes unwanted files

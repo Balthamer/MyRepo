@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/balthamer/Git/Lession_Plans/Project_Management'
+let g:netrw_dirhist_9='/home/balthamer/Documents/PT_Labs/05_OSPF'
+let g:netrw_dirhist_8='/home/balthamer/Documents/PT_Labs/02_SSH'
+let g:netrw_dirhist_7='/home/balthamer/Git/Learning/Python/login'
+let g:netrw_dirhist_6='/home/balthamer/.config'
+let g:netrw_dirhist_5='/home/balthamer/.config/alacritty'
+let g:netrw_dirhist_4='/home/balthamer/Git/Learning/WGU/Emerging_Technologies_in_Cybersecurity/Network_Map_and_Log_Analysis'
+let g:netrw_dirhist_3='/home/balthamer/Git/MyRepo/Arch/Dots/config/sxhkd'
+let g:netrw_dirhist_2='/home/balthamer/Git/Learning/WGU/Emerging_Technologies_in_Cybersecurity/Wireless_Security'
+let g:netrw_dirhist_1='/home/balthamer/Git/Learning/WGU/Managing_Information_Security'

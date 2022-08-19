@@ -1,20 +1,24 @@
 \documentclass[10pt,letterpaper]{article}
 
+% Main Packages
 \usepackage[margin=1in]{geometry}
 \usepackage[affil-it]{authblk}
-\usepackage{parskip}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{background}
 \usepackage{titlesec}
 \usepackage{titling}
-%%>++<%%
-
 \edef\restoreparindent{\parindent=\the\parindent\relax}
+\usepackage{parskip}
 \restoreparindent
 
+% Optional Packages with jump point
+%%>++<%%
+
+% Change section format
 \titleformat{\section}{\LARGE\bfseries}{}{0em}{}
 
+% Make the style sheet
 \fancypagestyle{ivy}{
     \fancyhf{}
     % Class name, e.g: NETI 104: Networking
