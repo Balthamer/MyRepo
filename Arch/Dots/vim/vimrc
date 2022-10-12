@@ -6,6 +6,9 @@ colorscheme wal
 set wrap linebreak nolist
 set laststatus=2
 
+"Keep the curser in the middle of the screen
+set scrolloff=999
+
 "Change location of viminfo
 set viminfofile=$HOME/.vim/viminfo
 
@@ -31,6 +34,11 @@ function! FoldMethod(lnum)
 endfunction
 set foldmethod=expr
 set foldexpr=FoldMethod(v:lnum)
+augroup remember_folds
+    autocmd!
+    autocmd BufWinLeave * mkview
+    autocmd BufWinEnter * silent! loadview
+augroup End
 
 "Searching highlights everything, space to remove highlight
 set incsearch hlsearch
