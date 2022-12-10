@@ -109,13 +109,12 @@
         feh                 // Wallpaper setter for pywal
         mpd                 // Music Player Deamon
         ncmpcpp             // Music Player
-        cherrytree          // Note taker
-        qutebrowser         // Vim based browser
-        python-adblock      // Adblocker for qutebrowser
+        obsidian            // Note taker
         bat                 // Cat clone with syntax highlights and git integration
         lsd                 // lsDeluxe pritty directory lists
         rsync               // sync/backup files from remote anywhere
-		}
+        dunst               // lightweight replacement for notification-daemons
+	}
 
 /* Install yay AUR Helper */
     cd /opt
@@ -135,8 +134,6 @@
     sed -i '/PUBLIC/d' /etc/xdg/user-dirs.defaults
 
 /* Add New User */
-    curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/new_user.sh | bash
-    -- or --
 	useradd -m -s $(which zsh) -G wheel,audio,video,optical,storage user_name
 	passwd user_name
 	visudo
@@ -152,7 +149,6 @@
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/tmux.conf > /home/$user/.tmux.conf
         mkdir -p /home/$user/.config/{alacritty,mpd,ranger,bspwm,sxhkd,picom}
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/alacritty/alacritty.yml > /home/$user/.config/alacritty/alacritty.yml
-        curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/awesome/rc.lua > /home/$user/.config/awesome/rc.lua
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/mpd/mpd.conf > /home/$user/.config/mpd/mpd.conf
         curl https://raw.githubusercontent.com/Balthamer/MyRepo/main/Arch/Dots/config/ranger/rc.conf > /home/$user/.config/ranger/rc.conf
         chown -R $user:$user /home/$user
@@ -164,7 +160,8 @@
         bspwm
         sxhkd
         picom
-    yay -S polybar
+        polybar
+    }
 
 /* Install GUI with Plasma */
 	pacman -S {
@@ -179,7 +176,7 @@
 	systemctl enable sddm
 
 /* Shutdown */
-    exitj
+    exit
     shutdown 0
     /* Remove media */
 
