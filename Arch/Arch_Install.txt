@@ -105,6 +105,7 @@
         figlet              // Make CLI banners
         ranger              // CLI File Manager
         ueberzug            // Image preview for ranger
+        openjdk-src         // Java Dev Kit Needed for Packet Tracer
         python-pywal        // Wallpaper based color management
         feh                 // Wallpaper setter for pywal
         mpd                 // Music Player Deamon
