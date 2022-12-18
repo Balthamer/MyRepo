@@ -115,6 +115,9 @@
         lsd                 // lsDeluxe pritty directory lists
         rsync               // sync/backup files from remote anywhere
         dunst               // lightweight replacement for notification-daemons
+        newsboat            // RSS and ATOM reader
+        yt-dlp              // Youtube-dl replacement
+        mpv                 // Terminal based video player
 	}
 
 /* Install yay AUR Helper */
