@@ -115,6 +115,18 @@
         lsd                 // lsDeluxe pritty directory lists
         rsync               // sync/backup files from remote anywhere
         dunst               // lightweight replacement for notification-daemons
+        newsboat            // RSS and ATOM reader
+        yt-dlp              // Youtube-dl replacement
+        mpv                 // Terminal based video player
+        starship            // A Shell Prompt
+        ttf-nerd-fonts-symbols-2048-em-mono
+        ttf-hack-nerd       // Hack Nerd Font
+        powerline-vim       // Powerline for vim
+        redshift            // Blue light filter
+        keepassxc           // Password manager
+        polkit              // Policy kit for sudoers
+        xclip               // Copy files to clipboard
+        clamav              // Anti-virus scanner
 	}
 
 /* Install yay AUR Helper */
