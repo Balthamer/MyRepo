@@ -25,4 +25,4 @@ pdflatex $file.tex -halt-on-error
 
 ## Display the compiled PDF in the correct mode
 [[ -n "$(head -n 1 $file.tex | grep beamer)" ]] && zathura $file.pdf --mode=presentation &
-[[ -n "$(head -n 1 $file.tex | grep article)" ]] && zathura $file.pdf --mode=fullscreen &
+[[ -n "$(head -n 1 $file.tex | grep article)" ]] && setsid zathura $file.pdf &
