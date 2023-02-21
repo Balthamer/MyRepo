@@ -114,6 +114,7 @@
         bat                 // Cat clone with syntax highlights and git integration
         lsd                 // lsDeluxe pritty directory lists
         rsync               // sync/backup files from remote anywhere
+        libnotify           // notify-send support
         dunst               // lightweight replacement for notification-daemons
         newsboat            // RSS and ATOM reader
         yt-dlp              // Youtube-dl replacement
@@ -127,6 +128,8 @@
         polkit              // Policy kit for sudoers
         xclip               // Copy files to clipboard
         clamav              // Anti-virus scanner
+        flac                // Free Lossless Audio Codec
+        cdparanoia          // abcde dependency
 	}
 
 /* Install yay AUR Helper */
