@@ -130,6 +130,8 @@
         clamav              // Anti-virus scanner
         flac                // Free Lossless Audio Codec
         cdparanoia          // abcde dependency
+        remmina             // Remote desktop client
+        freerdp             // Windows RDP support for remmina
 	}
 
 /* Install yay AUR Helper */
