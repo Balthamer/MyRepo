@@ -37,16 +37,30 @@ alias tmux='TERM=xterm-256color tmux'
 alias clock='while true; do tput clear; date +"%H : %M : %S" | figlet; sleep 1; done'
 alias ..='cd ..'
 alias mlp='/home/balthamer/Scripts/mlp.sh'
-alias wal='wal -a 80 -qi'
+alias chbg='/home/balthamer/Scripts/chbg.sh'
 alias pm='pulsemixer'
 alias office='libreoffice'
 alias cat='bat'
+alias mutt='neomutt'
 alias xclip='xclip -selection clipboard'
+
+alias work='cd ~/Git/Learning/WGU/Capstone/Task_1'
 
 PS1='%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%1~%f%F{red}]%f '
 
 # Starship prompt
 eval "$(starship init zsh)"
 
-# Import colorscheme from wal
-(/usr/bin/cat ~/.cache/wal/sequences &)
+# Colored man pages
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
+}
+
+# Check if system is up-to-date
+~/Scripts/update_log.sh
