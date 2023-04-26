@@ -2,11 +2,12 @@
 ## Make LaTeX PDF
 
 ## Pull out the file name
-file=$(echo $1 | cut -d '.' -f 1)
+tex_file=$(ls -1 | grep *.tex)
+file=$(echo $tex_file | cut -d '.' -f 1)
 
 ## Compiles the PDF, runs three times to generate correct ToC page numbers
 pdflatex $file.tex -halt-on-error
-biber $file 
+biber $file
 pdflatex $file.tex -halt-on-error
 pdflatex $file.tex -halt-on-error
 
@@ -24,5 +25,6 @@ pdflatex $file.tex -halt-on-error
 [[ -e $file.toc ]] && rm $file.toc
 
 ## Display the compiled PDF in the correct mode
+[[ -n "$(ps -x | grep zathura | grep $file.pdf)" ]] && exit
 [[ -n "$(head -n 1 $file.tex | grep beamer)" ]] && zathura $file.pdf --mode=presentation &
 [[ -n "$(head -n 1 $file.tex | grep article)" ]] && setsid zathura $file.pdf &
