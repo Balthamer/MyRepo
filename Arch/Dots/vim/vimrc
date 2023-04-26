@@ -2,7 +2,6 @@
 set number
 set relativenumber
 syntax on
-colorscheme wal
 set wrap linebreak nolist
 set laststatus=2
 
@@ -44,6 +43,8 @@ augroup End
 set incsearch hlsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Compile the PDF on write
+autocmd BufWritePost *.tex !~/Scripts/mlp.sh
 " LaTeX Autocommands
 " SA - Start new Article
 " SB - Start new Beamer
