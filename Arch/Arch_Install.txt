@@ -46,7 +46,6 @@
     echo 'HOST_NAME' > /etc/hostname
     echo '127.0.0.1     localhost' >> /etc/hosts
     echo '::1           localhost' >> /etc/hosts
-    echo '127.0.1.1     HOST_NAME.localdomain HOST_NAME
 	vim /etc/pacman.conf /* Uncomment both lines of community and multilib */
 		
 /* Install other packages */
